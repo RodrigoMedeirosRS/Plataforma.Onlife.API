@@ -1,0 +1,45 @@
+# Compila o código 64bits
+dotnet build
+
+# Executa o código 64bits
+dotnet run
+
+# Publica o projeto 64bits
+dotnet publish -c Release
+
+# Compila o código 32bits
+dotnet build --runtime win7-x86
+
+# Executa o código 32bits
+dotnet run --runtime win7-x86
+
+# Publica o projeto 32bits
+dotnet publish --runtime win7-x86 -c Release
+
+# Gera um novo migration para o banco de dados
+dotnet-ef migrations add [Nome da migration]
+
+# Atualiza banco de dados com base na migration
+dotnet-ef migrations update
+
+# Instala o entityframwork
+dotnet tool install --global dotnet-ef
+
+# Executa o Scaffold, atualizando os dados do rest conforme o banco de dados
+dotnet ef dbcontext scaffold "User ID=postgres;Password=senha;Server=127.0.0.1;Port=5432;Database=bibliotecaviva;Integrated Security=true;" Npgsql.EntityFrameworkCore.PostgreSQL --startup-project API/ --project DAO/ -f
+ --table "nome_da_tabela"
+
+dotnet ef dbcontext scaffold "User ID=postgres;Password=@rodrigo1;Server=127.0.0.1;Port=5432;Database=bibliotecaviva;Integrated Security=true;" Npgsql.EntityFrameworkCore.PostgreSQL --startup-project API/ --project DAO/ -f
+ --table "nome_da_tabela"
+
+ # Cria Submodulo
+git submodule add https://github.com/RodrigoMedeirosRS/BibliotecaViva.LIB.git
+
+# Clona com Submodulo
+git clone -recursive https://github.com/RodrigoMedeirosRS/BibliotecaViva.LIB.git
+
+# Cria Tag de Publicação
+git tag V.1.0.0
+
+# Da push na tag para o repositório
+git push origin --tags

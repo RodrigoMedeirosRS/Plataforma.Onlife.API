@@ -1,0 +1,22 @@
+{
+  "files.exclude": {
+    "API/obj": true,
+    "BLL/bin": true,
+    "BLL/obj": true,
+    "DAL/bin": true,
+    "DAL/obj": true,
+    "API/bin": true,
+    "DTO/bin": true,
+    "DTO/obj": true,
+    "DAO/bin": true,
+    "DAO/obj": true,
+    ".vscode": true,
+    "Biblioteca_Viva.LIB\\.vscode": true,
+    "Biblioteca_Viva.LIB\\DTO\\bin": true,
+    "Biblioteca_Viva.LIB\\DTO\\obj": true,
+    "BibliotecaViva.LIB\\.vscode": true,
+    "BibliotecaViva.LIB/DTO/bin": true,
+    "BibliotecaViva.LIB/DTO/obj": true,
+    "BibliotecaViva.LIB/.vscode": true
+  }
+}
