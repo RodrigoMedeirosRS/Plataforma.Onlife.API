@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DAL\BibliotecaViva.DAL.csproj" />
-    <ProjectReference Include="..\BibliotecaViva.LIB\DTO\BibliotecaViva.DTO.csproj" />
   </ItemGroup>
 
   <ItemGroup>
