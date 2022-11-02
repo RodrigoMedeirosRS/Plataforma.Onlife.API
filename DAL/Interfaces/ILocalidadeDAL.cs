@@ -1,13 +1,15 @@
+using System.Collections.Generic;
 using DTO;
 
 namespace DAL.Interfaces
 {
     public interface ILocalidadeDAL
     {
-        int Cadastrar(Localidade localizacaoGeograficaDTO);
+        int Cadastrar(LocalidadeDTO localidadeDTO);
         void RemoverVinculoRegistro(int? codigoRegistro);
-        DTO.Localidade Consultar(string nome, bool completo);
-        DTO.Localidade Consultar(int codigo, bool completo);
-        void Vincular(Localidade localizacaoGeograficaDTO, RegistroDTO registroDTO);
+        DTO.LocalidadeDTO Consultar(string nome, bool completo);
+        DTO.LocalidadeDTO Consultar(int codigo, bool completo);
+        List<LocalidadeDTO> Listar();
+        void Vincular(LocalidadeDTO localidadeDTO, RegistroDTO registroDTO);
     }
 }

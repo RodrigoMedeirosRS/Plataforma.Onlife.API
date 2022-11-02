@@ -61,7 +61,7 @@ namespace DAL.Utils
                 Binario  = tipo.Binario
             } : null;
         }
-        internal static BibliotecaViva.DAO.Localidade Mapear(DTO.Localidade localidade)
+        internal static BibliotecaViva.DAO.Localidade Mapear(DTO.LocalidadeDTO localidade)
         {
             return localidade != null ? new BibliotecaViva.DAO.Localidade()
             {
@@ -73,9 +73,9 @@ namespace DAL.Utils
                 Longitude = localidade.Longitude
             } : null;
         }
-        internal static DTO.Localidade Mapear(BibliotecaViva.DAO.Localidade localidade, bool completo)
+        internal static DTO.LocalidadeDTO Mapear(BibliotecaViva.DAO.Localidade localidade, bool completo)
         {
-            return localidade != null ? new DTO.Localidade()
+            return localidade != null ? new DTO.LocalidadeDTO()
             {
                 Codigo = localidade.Codigo,
                 Nome = localidade.Nome,

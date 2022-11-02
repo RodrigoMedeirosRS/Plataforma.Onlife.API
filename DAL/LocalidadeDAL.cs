@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Collections.Generic;
 using MoreLinq;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,7 +16,7 @@ namespace DAL
         {
 
         }
-        public int Cadastrar(DTO.Localidade localidadeDTO)
+        public int Cadastrar(LocalidadeDTO localidadeDTO)
         {
             var localidade = DataContext.Localidades.AsNoTracking().FirstOrDefault(localidade => localidade.Codigo == localidadeDTO.Codigo);
             
@@ -35,7 +36,7 @@ namespace DAL
 
             return localidade.Codigo;
         }
-        public DTO.Localidade Consultar(string nome, bool completo)
+        public LocalidadeDTO Consultar(string nome, bool completo)
         {
             var resultado = (from localidade in DataContext.Localidades
                 where
@@ -44,7 +45,7 @@ namespace DAL
                     Conversor.Mapear(localidade, completo)).AsNoTracking().DistinctBy(registroDB => registroDB.Codigo).FirstOrDefault();
             return resultado;
         }
-        public DTO.Localidade Consultar(int codigo, bool completo)
+        public LocalidadeDTO Consultar(int codigo, bool completo)
         {
             var resultado = (from localidade in DataContext.Localidades
                 where
@@ -53,12 +54,19 @@ namespace DAL
                     Conversor.Mapear(localidade, completo)).AsNoTracking().DistinctBy(registroDB => registroDB.Codigo).FirstOrDefault();
             return resultado;
         }
-        public void Vincular(DTO.Localidade localizacaoGeograficaDTO, RegistroDTO registroDTO)
+        public List<LocalidadeDTO> Listar()
+        {
+            var resultado =  (from localidade in DataContext.Localidades
+                select
+                    Conversor.Mapear(localidade, false)).AsNoTracking().DistinctBy(registroDB => registroDB.Codigo).ToList();
+            return resultado;
+        }
+        public void Vincular(LocalidadeDTO localidadeDTO, RegistroDTO registroDTO)
         {
             DataContext.Registrolocalidades.Add(new Registrolocalidade()
             {
                 Registro = (int)registroDTO.Codigo,
-                Localidade = (int)localizacaoGeograficaDTO.Codigo
+                Localidade = (int)localidadeDTO.Codigo
             });
             DataContext.SaveChanges();
         }

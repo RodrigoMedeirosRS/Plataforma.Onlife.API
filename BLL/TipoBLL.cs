@@ -27,7 +27,7 @@ namespace BLL
         public async Task<string> Cadastrar(TipoDTO tipoDTO)
         {
             TipoDAL.Cadastrar(tipoDTO);
-            return "Idioma " + tipoDTO.Nome + " Cadastrado com Sucesso!";
+            return "Tipo " + tipoDTO.Nome + " Cadastrado com Sucesso!";
         }
         public async Task<string> Cadastrar(TipoRelacaoDTO tipoRelacaoDTO)
         {
