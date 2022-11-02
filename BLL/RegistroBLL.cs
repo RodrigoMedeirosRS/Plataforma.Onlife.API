@@ -29,7 +29,7 @@ namespace BibliotecaViva.BLL
             {
                 Nome = registro.Nome,
                 Idioma = registro.Idioma
-            });
+            }, registro.Completo);
         }
         public async Task<ReferenciaRetorno> ObterReferencias(int codRegistro)
         {

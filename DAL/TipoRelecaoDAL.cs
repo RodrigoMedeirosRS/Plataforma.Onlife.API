@@ -11,7 +11,7 @@ namespace BibliotecaViva.DAL
 {
     public class TipoRelecaoDAL : BaseDAL, ITipoRelacaoDAL
     {
-        public TipoRelecaoDAL(bibliotecavivaContext dataContext) : base(dataContext)
+        public TipoRelecaoDAL(plataformaonlifeContext dataContext) : base(dataContext)
         {
         }
         public void Cadastrar(TipoRelacaoDTO tipoRelacaoDTO)

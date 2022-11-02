@@ -11,7 +11,7 @@ namespace BibliotecaViva.DAL
 {
     public class TipoExecucaoDAL : BaseDAL, ITipoExecucaoDAL
     {
-        public TipoExecucaoDAL(bibliotecavivaContext dataContext) : base(dataContext)
+        public TipoExecucaoDAL(plataformaonlifeContext dataContext) : base(dataContext)
         {
 
         }

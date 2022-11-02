@@ -11,7 +11,7 @@ namespace BibliotecaViva.DAL
 {
     public class TipoDAL : BaseDAL, ITipoDAL
     {
-        public TipoDAL(bibliotecavivaContext dataContext) : base(dataContext)
+        public TipoDAL(plataformaonlifeContext dataContext) : base(dataContext)
         {
         }
 

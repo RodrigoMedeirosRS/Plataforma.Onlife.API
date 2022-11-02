@@ -11,7 +11,7 @@ namespace BibliotecaViva.DAL
 {
     public class IdiomaDAL : BaseDAL, IIdiomaDAL
     {
-        public IdiomaDAL(bibliotecavivaContext dataContext) : base(dataContext)
+        public IdiomaDAL(plataformaonlifeContext dataContext) : base(dataContext)
         {
         }
         public void Cadastrar(IdiomaDTO idiomaDTO)

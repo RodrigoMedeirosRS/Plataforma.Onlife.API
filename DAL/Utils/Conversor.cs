@@ -6,38 +6,6 @@ namespace BibliotecaViva.DAL.Utils
 {
     internal static class Conversor
     {
-        internal static Apelido Mapear(ApelidoDTO apelido)
-        {
-            return apelido != null ? new Apelido()
-            {
-                Codigo = apelido.Codigo,
-                Nome = apelido.Nome
-            } : null;
-        }
-        internal static ApelidoDTO Mapear(Apelido apelido)
-        {
-            return apelido != null ? new ApelidoDTO()
-            {
-                Codigo = apelido.Codigo,
-                Nome = apelido.Nome
-            } : null;
-        }
-        internal static Descricao Mapear(DescricaoDTO descricao)
-        {
-            return descricao != null ? new Descricao()
-            {
-                Registro = descricao.Registro,
-                Conteudo = descricao.Conteudo
-            } : null;
-        }
-        internal static DescricaoDTO Mapear(Descricao descricao)
-        {
-            return descricao != null ? new DescricaoDTO()
-            {
-                Registro = descricao.Registro,
-                Conteudo = descricao.Conteudo
-            } : null;
-        }
         internal static Idioma Mapear(IdiomaDTO idioma)
         {
             return idioma != null ? new Idioma()
@@ -93,22 +61,28 @@ namespace BibliotecaViva.DAL.Utils
                 Binario  = tipo.Binario
             } : null;
         }
-        internal static Localizacaogeografica Mapear(LocalizacaoGeograficaDTO localizacaoGeografica)
+        internal static DAO.Localidade Mapear(DTO.Localidade localidade)
         {
-            return localizacaoGeografica != null ? new Localizacaogeografica()
+            return localidade != null ? new DAO.Localidade()
             {
-                Codigo = localizacaoGeografica.Codigo,
-                Latitude = localizacaoGeografica.Latitude,
-                Longitude = localizacaoGeografica.Longitude
+                Codigo = localidade.Codigo,
+                Nome = localidade.Nome,
+                Descricao = localidade.Descricao,
+                Mapa = localidade.Mapa,
+                Latitude = localidade.Latitude,
+                Longitude = localidade.Longitude
             } : null;
         }
-        internal static LocalizacaoGeograficaDTO Mapear(Localizacaogeografica localizacaoGeografica)
+        internal static DTO.Localidade Mapear(DAO.Localidade localidade)
         {
-            return localizacaoGeografica != null ? new LocalizacaoGeograficaDTO()
+            return localidade != null ? new DTO.Localidade()
             {
-                Codigo = localizacaoGeografica.Codigo,
-                Latitude = localizacaoGeografica.Latitude,
-                Longitude = localizacaoGeografica.Longitude
+                Codigo = localidade.Codigo,
+                Nome = localidade.Nome,
+                Descricao = localidade.Descricao,
+                Mapa = localidade.Mapa,
+                Latitude = localidade.Latitude,
+                Longitude = localidade.Longitude
             } : null;
         }
         internal static Pessoa Mapear(PessoaDTO pessoa)
@@ -117,8 +91,11 @@ namespace BibliotecaViva.DAL.Utils
             {
                 Codigo = pessoa.Codigo,
                 Nome = pessoa.Nome,
-                Sobrenome = pessoa.Sobrenome,
-                Genero = pessoa.Genero
+                Apelido = pessoa.Apelido,
+                Foto = pessoa.Foto,
+                Researchgate = pessoa.ResearchGate,
+                Linkedin = pessoa.LinkedIn,
+                Lattes = pessoa.Lattes
             } : null;
         }
         internal static PessoaDTO Mapear(Pessoa pessoa)
@@ -127,8 +104,11 @@ namespace BibliotecaViva.DAL.Utils
             {
                 Codigo = pessoa.Codigo,
                 Nome = pessoa.Nome,
-                Sobrenome = pessoa.Sobrenome,
-                Genero = pessoa.Genero
+                Apelido = pessoa.Apelido,
+                Foto = pessoa.Foto,
+                ResearchGate = pessoa.Researchgate,
+                LinkedIn = pessoa.Linkedin,
+                Lattes = pessoa.Lattes
             } : null;
         }
         internal static Tiporelacao Mapear(TipoRelacaoDTO tipoRelacao)
@@ -145,6 +125,33 @@ namespace BibliotecaViva.DAL.Utils
             {
                 Codigo = tipoRelacao.Codigo,
                 Nome = tipoRelacao.Nome
+            } : null;
+        }
+        internal static RegistroDTO Mapear (Registro registro, string tipo, bool completo)
+        {
+            return registro != null ? new RegistroDTO()
+            {
+                Codigo = registro.Codigo,
+                Nome = registro.Nome,
+                Tipo = tipo,
+                Conteudo = completo ? registro.Conteudo : string.Empty,
+                DataInsercao = registro.Datainsercao,
+                Latitude = registro.Latitude ?? 0,
+                Longitude = registro.Longitude ?? 0,
+                Descricao = registro.Descricao
+            } : null;
+        }
+        internal static Registro Mapear (RegistroDTO registro)
+        {
+            return registro != null ? new Registro()
+            {
+                Codigo = registro.Codigo,
+                Nome = registro.Nome,
+                Conteudo = registro.Conteudo,
+                Datainsercao = registro.DataInsercao,
+                Latitude = registro.Latitude,
+                Longitude = registro.Longitude,
+                Descricao = registro.Descricao
             } : null;
         }
     }

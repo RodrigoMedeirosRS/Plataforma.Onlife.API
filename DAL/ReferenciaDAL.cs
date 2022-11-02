@@ -12,7 +12,7 @@ namespace BibliotecaViva.DAL
 {
     public class ReferenciaDAL : BaseDAL, IReferenciaDAL
     {
-        public ReferenciaDAL(bibliotecavivaContext dataContext) : base(dataContext)
+        public ReferenciaDAL(plataformaonlifeContext dataContext) : base(dataContext)
         {
         }
         public void VincularReferencia(RegistroDTO registroDTO)
@@ -39,7 +39,7 @@ namespace BibliotecaViva.DAL
                 return registros;
 
             foreach(var referencia in referencias)
-                registros.Add(registroDAL.Consultar((int)referencia.Referencia));
+                registros.Add(registroDAL.Consultar((int)referencia.Referencia, false));
 
             return registros;
         }

@@ -15,7 +15,7 @@ namespace BibliotecaViva.DAL
         private ITipoRelacaoDAL TipoRelacaoDAL { get; set; }
         private IRegistroDAL RegistroDAL { get; set; }
         private IReferenciaDAL ReferenciaDAL { get; set; }
-        public PessoaRegistroDAL(bibliotecavivaContext dataContext, ITipoRelacaoDAL tipoRelacaoDAL, IRegistroDAL registroDAL, IReferenciaDAL referenciaDAL) : base(dataContext)
+        public PessoaRegistroDAL(plataformaonlifeContext dataContext, ITipoRelacaoDAL tipoRelacaoDAL, IRegistroDAL registroDAL, IReferenciaDAL referenciaDAL) : base(dataContext)
         {
             TipoRelacaoDAL = tipoRelacaoDAL;
             RegistroDAL = registroDAL;
@@ -70,53 +70,15 @@ namespace BibliotecaViva.DAL
                 join
                     tipo in DataContext.Tipos
                     on registro.Tipo equals tipo.Codigo
-                join
-                    descricao in DataContext.Descricaos
-                    on registro.Codigo equals descricao.Registro into descricaoLeftJoin from descricaoLeft in descricaoLeftJoin.DefaultIfEmpty()
-                join
-                    registroApelido in DataContext.Registroapelidos
-                    on registro.Codigo equals registroApelido.Registro into registroApelidoLeftJoin from registroApelidoLeft in registroApelidoLeftJoin.DefaultIfEmpty()
-                join
-                   apelido in DataContext.Apelidos
-                   on new Registroapelido(){ 
-                       Apelido = registroApelidoLeft != null ? registroApelidoLeft.Apelido : 0
-                    }.Apelido equals apelido.Codigo into apelidoLeftJoin from apelidoLeft in apelidoLeftJoin.DefaultIfEmpty()
-                join
-                    registroLocalizacao in DataContext.Registrolocalizacaos
-                    on registro.Codigo equals registroLocalizacao.Registro into registroLocalizacaoLeftJoin from registroLocalizacaoLeft in registroLocalizacaoLeftJoin.DefaultIfEmpty()
-                join
-                   localizacaoGeografica in DataContext.Localizacaogeograficas
-                   on new Registrolocalizacao(){ 
-                       Localizacaogeografica = registroLocalizacaoLeft != null ? registroLocalizacaoLeft.Localizacaogeografica : 0
-                    }.Localizacaogeografica equals localizacaoGeografica.Codigo into localizacaoGeograficaLeftJoin from localizacaoGeograficaLeft in localizacaoGeograficaLeftJoin.DefaultIfEmpty()
-
                 where 
-                    pessoaRelacao.Pessoa == pessoaDTO.Codigo
-                
-                select new RegistroDTO()
-                {
-                    Codigo = registro.Codigo,
-                    Nome = registro.Nome,
-                    Apelido = apelidoLeft != null ? apelidoLeft.Nome : string.Empty,
-                    Idioma = idioma.Nome,
-                    Tipo = tipo.Nome,
-                    Conteudo = registro.Conteudo,
-                    Descricao = descricaoLeft != null ? descricaoLeft.Conteudo : string.Empty,
-                    DataInsercao = registro.Datainsercao,
-                    Latitude = ObterLocalizacaoGeografica(localizacaoGeograficaLeft, true).ToString(),
-                    Longitude = ObterLocalizacaoGeografica(localizacaoGeograficaLeft, false).ToString()
-                }).AsNoTracking().DistinctBy(registroDB => registroDB.Codigo).ToList();
+                    pessoaRelacao.Pessoa == pessoaDTO.Codigo 
+                select 
+                    Conversor.Mapear(registro, tipo.Nome, false)).AsNoTracking().DistinctBy(registroDB => registroDB.Codigo).ToList();
             
             foreach(var registro in registros)
                 registro.Referencias = ReferenciaDAL.ObterReferencia(registro.Codigo);
             
             return registros;
-        }
-        private static double? ObterLocalizacaoGeografica(Localizacaogeografica localizacaoGeograficaLeft, bool latitude)
-        {
-            if (localizacaoGeograficaLeft != null)
-                return latitude ? localizacaoGeograficaLeft.Latitude : localizacaoGeograficaLeft.Longitude;
-            return null;
         }
         private IQueryable<Pessoaregistro> ListarRelacoes(int codPessoa)
         {
