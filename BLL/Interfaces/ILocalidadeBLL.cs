@@ -13,5 +13,6 @@ namespace BLL.Interfaces
         Task<string> Cadastrar(LocalidadeDTO localidade);
         Task<LocalidadeDTO> Consultar(LocalidadeConsulta localidadeConsulta);
         Task<List<LocalidadeDTO>> Listar(string entrada);
+        Task<string> Vincular(VincularRegistroLocalidade vinculo);
     }
 }

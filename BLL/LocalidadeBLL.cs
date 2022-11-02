@@ -35,5 +35,10 @@ namespace BLL
         {
             return DAL.Listar();
         }
+        public async Task<string> Vincular(VincularRegistroLocalidade vinculo)
+        {
+            DAL.Vincular(vinculo.Localidade, vinculo.Registro);
+            return "Registro " + vinculo.Registro.Nome + " foi vinculado com sucesso a " + vinculo.Localidade.Nome; 
+        }
     }
 }

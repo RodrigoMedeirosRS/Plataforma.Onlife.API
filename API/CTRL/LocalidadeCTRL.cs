@@ -40,5 +40,11 @@ namespace CTRL
         {
             return _Requisicao.ExecutarRequisicao<string, List<LocalidadeDTO>>(entrada, _BLL.Listar).Result;
         }
+
+        [HttpPost("Vincular")]
+        public async Task<string> Vincular(VincularRegistroLocalidade vinculo)
+        {
+            return _Requisicao.ExecutarRequisicao<VincularRegistroLocalidade, string>(vinculo, _BLL.Vincular).Result;
+        }
     }
 }

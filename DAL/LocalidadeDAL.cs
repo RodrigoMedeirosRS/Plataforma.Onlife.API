@@ -70,12 +70,5 @@ namespace DAL
             });
             DataContext.SaveChanges();
         }
-        public void RemoverVinculoRegistro(int? codigoRegistro)
-        {
-            var localizacao = DataContext.Registrolocalidades.AsNoTracking().FirstOrDefault(localizacao => localizacao.Registro == codigoRegistro);
-            if (localizacao != null)
-                DataContext.Remove(localizacao);
-            DataContext.SaveChanges();
-        }  
     }
 }
