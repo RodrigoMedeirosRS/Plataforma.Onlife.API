@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using BibliotecaViva.DTO;
+using DTO;
 
-namespace BibliotecaViva.DAL.Interfaces
+namespace DAL.Interfaces
 {
     public interface IIdiomaDAL
     {

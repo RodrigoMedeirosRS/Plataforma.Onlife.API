@@ -1,8 +1,8 @@
 using BibliotecaViva.DAO;
-using BibliotecaViva.DTO;
-using BibliotecaViva.DTO.Utils;
+using DTO;
+using DTO.Utils;
 
-namespace BibliotecaViva.DAL.Utils
+namespace DAL.Utils
 {
     internal static class Conversor
     {
@@ -61,9 +61,9 @@ namespace BibliotecaViva.DAL.Utils
                 Binario  = tipo.Binario
             } : null;
         }
-        internal static DAO.Localidade Mapear(DTO.Localidade localidade)
+        internal static BibliotecaViva.DAO.Localidade Mapear(DTO.Localidade localidade)
         {
-            return localidade != null ? new DAO.Localidade()
+            return localidade != null ? new BibliotecaViva.DAO.Localidade()
             {
                 Codigo = localidade.Codigo,
                 Nome = localidade.Nome,
@@ -73,14 +73,14 @@ namespace BibliotecaViva.DAL.Utils
                 Longitude = localidade.Longitude
             } : null;
         }
-        internal static DTO.Localidade Mapear(DAO.Localidade localidade)
+        internal static DTO.Localidade Mapear(BibliotecaViva.DAO.Localidade localidade, bool completo)
         {
             return localidade != null ? new DTO.Localidade()
             {
                 Codigo = localidade.Codigo,
                 Nome = localidade.Nome,
                 Descricao = localidade.Descricao,
-                Mapa = localidade.Mapa,
+                Mapa = completo ? localidade.Mapa : string.Empty,
                 Latitude = localidade.Latitude,
                 Longitude = localidade.Longitude
             } : null;

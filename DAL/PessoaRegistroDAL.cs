@@ -3,12 +3,12 @@ using System.Linq;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using BibliotecaViva.DAO;
-using BibliotecaViva.DTO;
-using BibliotecaViva.DAL.Utils;
-using BibliotecaViva.DAL.Interfaces;
+using DTO;
+using DAL.Utils;
+using DAL.Interfaces;
 
 
-namespace BibliotecaViva.DAL
+namespace DAL
 {
     public class PessoaRegistroDAL : BaseDAL, IPessoaRegistroDAL
     {

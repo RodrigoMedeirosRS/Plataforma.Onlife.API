@@ -1,10 +1,10 @@
-using BibliotecaViva.DTO;
+using DTO;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using BibliotecaViva.DAL.Interfaces;
-using BibliotecaViva.BLL.Interfaces;
+using DAL.Interfaces;
+using BLL.Interfaces;
 
-namespace BibliotecaViva.BLL
+namespace BLL
 {
     public class TipoBLL : BaseBLL, ITipoBLL
     {

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using BibliotecaViva.DTO;
+using DTO;
 
-namespace BibliotecaViva.BLL.Interfaces
+namespace BLL.Interfaces
 {
     public interface ITipoBLL
     {

@@ -1,11 +1,11 @@
-﻿using BibliotecaViva.DTO;
+﻿using DTO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using BibliotecaViva.DTO.Dominio;
-using BibliotecaViva.DAL.Interfaces;
-using BibliotecaViva.BLL.Interfaces;
+using DTO.Dominio;
+using DAL.Interfaces;
+using BLL.Interfaces;
 
-namespace BibliotecaViva.BLL
+namespace BLL
 {
     public class RegistroBLL : BaseBLL, IRegistroBLL
     {

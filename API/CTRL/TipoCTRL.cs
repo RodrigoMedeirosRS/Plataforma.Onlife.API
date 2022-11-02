@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 using API.Interface;
-using BibliotecaViva.DTO;
-using BibliotecaViva.BLL.Interfaces;
+using DTO;
+using BLL.Interfaces;
 
 namespace BibliotecaViva.CTRL
 {

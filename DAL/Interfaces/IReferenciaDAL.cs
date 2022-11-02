@@ -1,7 +1,7 @@
-using BibliotecaViva.DTO;
+using DTO;
 using System.Collections.Generic;
 
-namespace BibliotecaViva.DAL.Interfaces
+namespace DAL.Interfaces
 {
     public interface IReferenciaDAL
     {

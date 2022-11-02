@@ -8,11 +8,11 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.EntityFrameworkCore;
 
 using API.Interface;
-using BibliotecaViva.BLL;
-using BibliotecaViva.DAL;
+using BLL;
+using DAL;
 using BibliotecaViva.DAO;
-using BibliotecaViva.DAL.Interfaces;
-using BibliotecaViva.BLL.Interfaces;
+using DAL.Interfaces;
+using BLL.Interfaces;
 
 namespace API
 {
@@ -47,6 +47,7 @@ namespace API
             services.AddScoped<ITipoBLL, TipoBLL>();
             services.AddScoped<IPessoaBLL, PessoaBLL>();
             services.AddScoped<IRegistroBLL, RegistroBLL>();
+            services.AddScoped<ILocalidadeBLL, LocalidadeBLL>();
         }
 
         private static void RealizarInjecaoDeDependenciasDAL(IServiceCollection services)

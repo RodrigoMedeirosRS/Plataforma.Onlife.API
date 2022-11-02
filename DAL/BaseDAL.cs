@@ -1,6 +1,6 @@
 using BibliotecaViva.DAO;
 
-namespace BibliotecaViva.DAL 
+namespace DAL 
 {
     public abstract class BaseDAL
     {

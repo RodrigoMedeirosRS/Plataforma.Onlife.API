@@ -3,11 +3,11 @@ using MoreLinq;
 using Microsoft.EntityFrameworkCore;
 
 using BibliotecaViva.DAO;
-using BibliotecaViva.DTO;
-using BibliotecaViva.DAL.Utils;
-using BibliotecaViva.DAL.Interfaces;
+using DTO;
+using DAL.Utils;
+using DAL.Interfaces;
 
-namespace BibliotecaViva.DAL
+namespace DAL
 {
     public class LocalidadeDAL : BaseDAL, ILocalidadeDAL
     {
@@ -35,22 +35,22 @@ namespace BibliotecaViva.DAL
 
             return localidade.Codigo;
         }
-        public DTO.Localidade Consultar(string nome)
+        public DTO.Localidade Consultar(string nome, bool completo)
         {
             var resultado = (from localidade in DataContext.Localidades
                 where
                     !string.IsNullOrEmpty(localidade.Nome) && localidade.Nome.ToLower().Contains(nome.ToLower())
                 select
-                    Conversor.Mapear(localidade)).AsNoTracking().DistinctBy(registroDB => registroDB.Codigo).FirstOrDefault();
+                    Conversor.Mapear(localidade, completo)).AsNoTracking().DistinctBy(registroDB => registroDB.Codigo).FirstOrDefault();
             return resultado;
         }
-        public DTO.Localidade Consultar(int codigo)
+        public DTO.Localidade Consultar(int codigo, bool completo)
         {
             var resultado = (from localidade in DataContext.Localidades
                 where
                     localidade.Codigo == codigo
                 select
-                    Conversor.Mapear(localidade)).AsNoTracking().DistinctBy(registroDB => registroDB.Codigo).FirstOrDefault();
+                    Conversor.Mapear(localidade, completo)).AsNoTracking().DistinctBy(registroDB => registroDB.Codigo).FirstOrDefault();
             return resultado;
         }
         public void Vincular(DTO.Localidade localizacaoGeograficaDTO, RegistroDTO registroDTO)

@@ -1,11 +1,11 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using BibliotecaViva.DTO;
-using BibliotecaViva.DTO.Dominio;
-using BibliotecaViva.DAL.Interfaces;
-using BibliotecaViva.BLL.Interfaces;
+using DTO;
+using DTO.Dominio;
+using DAL.Interfaces;
+using BLL.Interfaces;
 
-namespace BibliotecaViva.BLL
+namespace BLL
 {
     public class PessoaBLL : BaseBLL, IPessoaBLL
     {

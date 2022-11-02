@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using System.Collections.Generic;
-using BibliotecaViva.DTO;
-using BibliotecaViva.DTO.Dominio;
+using DTO;
+using DTO.Dominio;
 
-namespace BibliotecaViva.BLL.Interfaces
+namespace BLL.Interfaces
 {
     public interface IPessoaBLL
     {

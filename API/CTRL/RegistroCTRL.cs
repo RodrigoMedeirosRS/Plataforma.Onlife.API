@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 
 using API.Interface;
-using BibliotecaViva.DTO;
-using BibliotecaViva.DTO.Dominio;
-using BibliotecaViva.BLL.Interfaces;
+using DTO;
+using DTO.Dominio;
+using BLL.Interfaces;
 
 namespace BibliotecaViva.CTRL
 {

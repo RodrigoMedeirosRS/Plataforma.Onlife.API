@@ -1,8 +1,8 @@
 using System;
 using Newtonsoft.Json;
-using BibliotecaViva.BLL.Interfaces;
+using BLL.Interfaces;
 
-namespace BibliotecaViva.BLL
+namespace BLL
 {
     public abstract class BaseBLL : IBaseBLL
     {
