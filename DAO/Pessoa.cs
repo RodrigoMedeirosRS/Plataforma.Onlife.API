@@ -9,16 +9,17 @@ namespace BibliotecaViva.DAO
     {
         public Pessoa()
         {
-            Pessoaapelidos = new HashSet<Pessoaapelido>();
             Pessoaregistros = new HashSet<Pessoaregistro>();
         }
 
         public int Codigo { get; set; }
         public string Nome { get; set; }
-        public string Sobrenome { get; set; }
-        public string Genero { get; set; }
+        public string Apelido { get; set; }
+        public string Foto { get; set; }
+        public string Researchgate { get; set; }
+        public string Linkedin { get; set; }
+        public string Lattes { get; set; }
 
-        public virtual ICollection<Pessoaapelido> Pessoaapelidos { get; set; }
         public virtual ICollection<Pessoaregistro> Pessoaregistros { get; set; }
     }
 }
