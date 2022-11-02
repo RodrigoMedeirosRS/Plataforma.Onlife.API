@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BibliotecaViva.LIB\DTO\BibliotecaViva.DTO.csproj" />
     <ProjectReference Include="..\DAO\BibliotecaViva.DAO.csproj" />
     <ProjectReference Include="..\Plataforma.Onlife.LIB\DTO\BibliotecaViva.DTO.csproj" />
   </ItemGroup>
