@@ -76,10 +76,6 @@ namespace BibliotecaViva.DAO
                     .HasMaxLength(500)
                     .HasColumnName("descricao");
 
-                entity.Property(e => e.Latitude).HasColumnName("latitude");
-
-                entity.Property(e => e.Longitude).HasColumnName("longitude");
-
                 entity.Property(e => e.Mapa)
                     .IsRequired()
                     .HasColumnName("mapa");
@@ -88,6 +84,12 @@ namespace BibliotecaViva.DAO
                     .IsRequired()
                     .HasMaxLength(200)
                     .HasColumnName("nome");
+
+                entity.Property(e => e.X).HasColumnName("x");
+
+                entity.Property(e => e.Y).HasColumnName("y");
+
+                entity.Property(e => e.Z).HasColumnName("z");
             });
 
             modelBuilder.Entity<Pessoa>(entity =>

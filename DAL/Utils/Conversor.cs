@@ -1,3 +1,5 @@
+using System;
+
 using BibliotecaViva.DAO;
 using DTO;
 using DTO.Utils;
@@ -69,8 +71,9 @@ namespace DAL.Utils
                 Nome = localidade.Nome,
                 Descricao = localidade.Descricao,
                 Mapa = localidade.Mapa,
-                Latitude = localidade.Latitude,
-                Longitude = localidade.Longitude
+                X = Convert.ToDouble(localidade.X),
+                Y = Convert.ToDouble(localidade.Y),
+                Z = Convert.ToDouble(localidade.Z)
             } : null;
         }
         internal static DTO.LocalidadeDTO Mapear(BibliotecaViva.DAO.Localidade localidade, bool completo)
@@ -81,8 +84,9 @@ namespace DAL.Utils
                 Nome = localidade.Nome,
                 Descricao = localidade.Descricao,
                 Mapa = completo ? localidade.Mapa : string.Empty,
-                Latitude = localidade.Latitude,
-                Longitude = localidade.Longitude
+                X = Convert.ToSingle(localidade.X),
+                Y = Convert.ToSingle(localidade.Y),
+                Z = Convert.ToSingle(localidade.Z)
             } : null;
         }
         internal static Pessoa Mapear(PessoaDTO pessoa)
