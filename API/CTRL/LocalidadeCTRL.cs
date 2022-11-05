@@ -10,7 +10,7 @@ using BLL.Interfaces;
 
 namespace CTRL
 {
-    [Route("BibliotecaViva/Localidade")]
+    [Route("PlataformaOnlife/Localidade")]
     [ApiController]
     public class Localidade : Controller
     {
