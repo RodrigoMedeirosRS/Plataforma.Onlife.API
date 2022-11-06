@@ -43,3 +43,6 @@ git tag V.1.0.0
 
 # Da push na tag para o repositório
 git push origin --tags
+
+# Endereco banco de prod (plataformaonlife) ou teste (plataformaonlife_teste)
+20.62.91.99
