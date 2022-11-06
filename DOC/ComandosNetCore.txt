@@ -45,4 +45,7 @@ git tag V.1.0.0
 git push origin --tags
 
 # Endereco banco de prod (plataformaonlife) ou teste (plataformaonlife_teste)
-20.62.91.99
+"User ID=rodrigo;Password=senha;Server=20.62.91.99;Port=5432;Database=plataformaonlife;Integrated Security=true;"
+
+#Conection string de teste
+"User ID=rodrigo;Password=senha;Server=20.62.91.99;Port=5432;Database=plataformaonlife_teste;Integrated Security=true;"
