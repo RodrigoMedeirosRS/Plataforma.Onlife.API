@@ -39,7 +39,7 @@ namespace DAL
                     Conversor.Mapear(registro, tipo.Nome, completo)).AsNoTracking().FirstOrDefault();
             
             resultado.Referencias = ReferenciaDAL.ObterReferencia(resultado.Codigo);
-            
+            resultado.CodigoCidade = BuscarCidade(resultado.Codigo);
             return resultado;
         }
 
@@ -60,8 +60,10 @@ namespace DAL
                     Conversor.Mapear(registro, tipo.Nome, completo)).AsNoTracking().DistinctBy(registroDB => registroDB.Codigo).ToList(); 
 
             foreach(var registro in registros)
+            {
                 registro.Referencias = ReferenciaDAL.ObterReferencia(registro.Codigo);
-            
+                registro.CodigoCidade = BuscarCidade(registro.Codigo);
+            }
             return registros;
         }
         public int Cadastrar(RegistroDTO registroDTO)
@@ -80,8 +82,30 @@ namespace DAL
                 DataContext.SaveChanges();
                 registroDTO.Codigo = registro.Codigo;
             }
+            RegistrarLocalidade(registroDTO);
             ReferenciaDAL.VincularReferencia(registroDTO);
             return registro.Codigo;
+        }
+        private void RegistrarLocalidade(RegistroDTO registroDTO)
+        {
+            if (registroDTO.CodigoCidade != 0)
+            {
+                var cidade = DataContext.Registrolocalidades.AsNoTracking().FirstOrDefault(localidade => localidade.Localidade == registroDTO.Codigo && localidade.Registro == registroDTO.Codigo);
+                if (cidade != null)
+                    return;
+                var relacao = new Registrolocalidade()
+                {
+                    Localidade = registroDTO.CodigoCidade,
+                    Registro = registroDTO.Codigo
+                };
+                DataContext.Add(relacao);
+                DataContext.SaveChanges();
+            }
+        }
+        private int BuscarCidade(int codigoRegistro)
+        {
+            var resultado = DataContext.Registrolocalidades.AsNoTracking().FirstOrDefault(localidade => localidade.Registro == codigoRegistro);
+            return resultado != null ? resultado.Localidade : 0;
         }
         private Registro MapearRegistro(RegistroDTO registroDTO)
         {
