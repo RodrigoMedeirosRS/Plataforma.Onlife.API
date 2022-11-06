@@ -37,7 +37,7 @@ namespace DAL
         {
             return (from idioma in DataContext.Idiomas
                 orderby
-                    idioma.Nome 
+                    idioma.Codigo 
                 select 
                     Conversor.Mapear(idioma)).ToList(); 
         }  
