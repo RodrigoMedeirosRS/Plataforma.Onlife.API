@@ -140,8 +140,8 @@ namespace DAL.Utils
                 Tipo = tipo,
                 Conteudo = completo ? registro.Conteudo : string.Empty,
                 DataInsercao = registro.Datainsercao,
-                Latitude = registro.Latitude ?? 0,
-                Longitude = registro.Longitude ?? 0,
+                Latitude = Convert.ToSingle(registro.Latitude),
+                Longitude = Convert.ToSingle(registro.Longitude),
                 Descricao = registro.Descricao
             } : null;
         }

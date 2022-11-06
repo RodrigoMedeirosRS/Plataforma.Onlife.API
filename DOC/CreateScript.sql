@@ -58,8 +58,8 @@ CREATE TABLE Registro (
   Apelido VARCHAR(50)    ,
   Conteudo TEXT   NOT NULL ,
   DataInsercao TIMESTAMP   NOT NULL ,
-  Latitude INTEGER    ,
-  Longitude INTEGER    ,
+  Latitude FLOAT    ,
+  Longitude FLOAT    ,
   Descricao VARCHAR(500)      ,
 PRIMARY KEY(Codigo)    ,
   FOREIGN KEY(Tipo)

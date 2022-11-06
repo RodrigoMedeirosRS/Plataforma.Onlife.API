@@ -120,7 +120,7 @@ namespace BibliotecaViva.DAO
 
                 entity.Property(e => e.Nome)
                     .IsRequired()
-                    .HasMaxLength(30)
+                    .HasMaxLength(50)
                     .HasColumnName("nome");
 
                 entity.Property(e => e.Researchgate)
