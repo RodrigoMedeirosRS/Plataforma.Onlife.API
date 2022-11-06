@@ -9,6 +9,7 @@ namespace BLL.Interfaces
     {
         Task<string> Cadastrar(RegistroDTO registro);
         Task<List<RegistroDTO>> Consultar(RegistroConsulta registro);
+        Task<List<RegistroDTO>> ListarPorLocalidade(LocalidadeConsulta localidade);
         Task<ReferenciaRetorno> ObterReferencias(int codRegistro);
     }
 }

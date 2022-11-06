@@ -34,6 +34,11 @@ namespace BibliotecaViva.CTRL
         {
             return _Requisicao.ExecutarRequisicao<RegistroConsulta, List<RegistroDTO>>(registro, _BLL.Consultar).Result;
         }
+        [HttpPost("ListarPorLocalidade")]
+        public async Task<List<RegistroDTO>> ListarPorLocalidade(LocalidadeConsulta localidadeConsulta)
+        {
+            return _Requisicao.ExecutarRequisicao<LocalidadeConsulta, List<RegistroDTO>>(localidadeConsulta, _BLL.ListarPorLocalidade).Result;
+        }
 
         [HttpPost("ObterReferencias")]
         public async Task<ReferenciaRetorno> ObterReferencias(RelacaoConsulta Relacao)

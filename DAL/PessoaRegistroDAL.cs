@@ -73,12 +73,20 @@ namespace DAL
                 where 
                     pessoaRelacao.Pessoa == pessoaDTO.Codigo 
                 select 
-                    Conversor.Mapear(registro, tipo.Nome, false)).AsNoTracking().DistinctBy(registroDB => registroDB.Codigo).ToList();
+                    Conversor.Mapear(registro, tipo.Nome, false, 0)).AsNoTracking().DistinctBy(registroDB => registroDB.Codigo).ToList();
             
             foreach(var registro in registros)
+            {
                 registro.Referencias = ReferenciaDAL.ObterReferencia(registro.Codigo);
-            
+                registro.CodigoCidade = BuscarCidade(registro.Codigo);
+            }
+                
             return registros;
+        }
+        private int BuscarCidade(int codigoRegistro)
+        {
+            var resultado = DataContext.Registrolocalidades.AsNoTracking().FirstOrDefault(localidade => localidade.Registro == codigoRegistro);
+            return resultado != null ? resultado.Localidade : 0;
         }
         private IQueryable<Pessoaregistro> ListarRelacoes(int codPessoa)
         {

@@ -36,7 +36,7 @@ namespace DAL
                 where 
                     registro.Codigo == codRegistro
                 select
-                    Conversor.Mapear(registro, tipo.Nome, completo)).AsNoTracking().FirstOrDefault();
+                    Conversor.Mapear(registro, tipo.Nome, completo, 0)).AsNoTracking().FirstOrDefault();
             
             resultado.Referencias = ReferenciaDAL.ObterReferencia(resultado.Codigo);
             resultado.CodigoCidade = BuscarCidade(resultado.Codigo);
@@ -57,13 +57,35 @@ namespace DAL
                     ((!string.IsNullOrEmpty(registroDTO.Nome) && registro.Nome.ToLower().Contains(registroDTO.Nome.ToLower())) 
                     || ((!string.IsNullOrEmpty(registroDTO.Apelido) && registro.Apelido.ToLower().Contains(registroDTO.Apelido.ToLower()))))
                 select
-                    Conversor.Mapear(registro, tipo.Nome, completo)).AsNoTracking().DistinctBy(registroDB => registroDB.Codigo).ToList(); 
+                    Conversor.Mapear(registro, tipo.Nome, completo, 0)).AsNoTracking().DistinctBy(registroDB => registroDB.Codigo).ToList(); 
 
             foreach(var registro in registros)
             {
                 registro.Referencias = ReferenciaDAL.ObterReferencia(registro.Codigo);
                 registro.CodigoCidade = BuscarCidade(registro.Codigo);
             }
+            return registros;
+        }
+        public List<RegistroDTO> ListarPorLocalidade(int codigoLocalidade)
+        {
+            var registros = (from registroLocalidade in DataContext.Registrolocalidades
+                join
+                    registro in DataContext.Registros
+                    on registroLocalidade.Registro equals registro.Codigo
+                join
+                    idioma in DataContext.Idiomas
+                    on registro.Idioma equals idioma.Codigo
+                join
+                    tipo in DataContext.Tipos
+                    on registro.Tipo equals tipo.Codigo
+                where
+                    registroLocalidade.Localidade == codigoLocalidade
+                select
+                    Conversor.Mapear(registro, tipo.Nome, false, registroLocalidade.Localidade)).AsNoTracking().DistinctBy(registroDB => registroDB.Codigo).ToList();
+            
+            foreach(var registro in registros)
+                registro.Referencias = ReferenciaDAL.ObterReferencia(registro.Codigo);
+            
             return registros;
         }
         public int Cadastrar(RegistroDTO registroDTO)

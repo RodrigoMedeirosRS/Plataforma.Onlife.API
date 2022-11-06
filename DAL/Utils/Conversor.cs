@@ -131,7 +131,7 @@ namespace DAL.Utils
                 Nome = tipoRelacao.Nome
             } : null;
         }
-        internal static RegistroDTO Mapear (Registro registro, string tipo, bool completo)
+        internal static RegistroDTO Mapear (Registro registro, string tipo, bool completo, int codigoLocalidade = 0)
         {
             return registro != null ? new RegistroDTO()
             {
@@ -142,7 +142,8 @@ namespace DAL.Utils
                 DataInsercao = registro.Datainsercao,
                 Latitude = Convert.ToSingle(registro.Latitude),
                 Longitude = Convert.ToSingle(registro.Longitude),
-                Descricao = registro.Descricao
+                Descricao = registro.Descricao,
+                CodigoCidade = codigoLocalidade
             } : null;
         }
         internal static Registro Mapear (RegistroDTO registro)

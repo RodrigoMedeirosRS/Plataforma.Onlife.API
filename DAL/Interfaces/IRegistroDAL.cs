@@ -7,6 +7,7 @@ namespace DAL.Interfaces
     {
         List<RegistroDTO> Consultar(RegistroDTO registroDTO, bool completo);
         RegistroDTO Consultar(int codRegistro, bool completo);
+        List<RegistroDTO> ListarPorLocalidade(int codigoLocalidade);
         int Cadastrar(RegistroDTO registroDTO);
     }
 }
