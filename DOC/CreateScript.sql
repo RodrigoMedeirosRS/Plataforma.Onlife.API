@@ -5,13 +5,13 @@ PRIMARY KEY(Codigo));
 
 CREATE TABLE TipoDeExecucao (
   Codigo SERIAL  NOT NULL ,
-  Nome VARCHAR(40) UNIQUE  NOT NULL ,
+  Nome VARCHAR(50) UNIQUE  NOT NULL ,
   Binario BOOL   NOT NULL   ,
 PRIMARY KEY(Codigo));
 
 CREATE TABLE Pessoa (
   Codigo SERIAL  NOT NULL ,
-  Nome VARCHAR(30) UNIQUE  NOT NULL ,
+  Nome VARCHAR(50)  NOT NULL ,
   Apelido VARCHAR(50)    ,
   Foto TEXT    ,
   ResearchGate VARCHAR(300)    ,
@@ -21,12 +21,12 @@ PRIMARY KEY(Codigo));
 
 CREATE TABLE Idioma (
   Codigo SERIAL  NOT NULL ,
-  Nome VARCHAR(20) UNIQUE NOT NULL     ,
+  Nome VARCHAR(50) UNIQUE NOT NULL     ,
 PRIMARY KEY(Codigo));
 
 CREATE TABLE Localidade (
   Codigo SERIAL  NOT NULL ,
-  Nome VARCHAR(200) UNIQUE  NOT NULL ,
+  Nome VARCHAR(200)  NOT NULL ,
   Descricao VARCHAR(500)   NOT NULL ,
   Mapa TEXT   NOT NULL ,
   X FLOAT   NOT NULL ,
@@ -37,7 +37,7 @@ PRIMARY KEY(Codigo));
 CREATE TABLE Tipo (
   Codigo SERIAL  NOT NULL ,
   TipoDeExecucao INTEGER   NOT NULL ,
-  Nome VARCHAR(30) UNIQUE  NOT NULL ,
+  Nome VARCHAR(50) UNIQUE  NOT NULL ,
   Extensao VARCHAR(7)   NOT NULL   ,
 PRIMARY KEY(Codigo)  ,
   FOREIGN KEY(TipoDeExecucao)
@@ -54,8 +54,8 @@ CREATE TABLE Registro (
   Codigo SERIAL  NOT NULL ,
   Idioma INTEGER   NOT NULL ,
   Tipo INTEGER   NOT NULL ,
-  Nome VARCHAR(30) UNIQUE  NOT NULL ,
-  Apelido VARCHAR(30)    ,
+  Nome VARCHAR(50)  NOT NULL ,
+  Apelido VARCHAR(50)    ,
   Conteudo TEXT   NOT NULL ,
   DataInsercao TIMESTAMP   NOT NULL ,
   Latitude INTEGER    ,
