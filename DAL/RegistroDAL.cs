@@ -66,6 +66,27 @@ namespace DAL
             }
             return registros;
         }
+        public RegistroDTO ObterRelacao(int codigoregistro)
+        {
+            var resultado = (from registro in DataContext.Registros
+                join
+                    idioma in DataContext.Idiomas
+                    on registro.Idioma equals idioma.Codigo
+                join
+                    tipo in DataContext.Tipos
+                    on registro.Tipo equals tipo.Codigo
+                join
+                    registroLocalidade in DataContext.Registrolocalidades
+                    on registro.Codigo equals registroLocalidade.Registro
+                where
+                    registro.Codigo == codigoregistro
+                select
+                    Conversor.Mapear(registro, idioma.Nome, tipo.Nome, false, registroLocalidade.Localidade)).AsNoTracking().DistinctBy(registroDB => registroDB.Codigo).FirstOrDefault();
+            
+            resultado.Referencias = ReferenciaDAL.ObterReferencia(resultado.Codigo);
+            
+            return resultado;
+        }
         public List<RegistroDTO> ListarPorLocalidade(int codigoLocalidade)
         {
             var registros = (from registroLocalidade in DataContext.Registrolocalidades

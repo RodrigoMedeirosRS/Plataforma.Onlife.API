@@ -31,6 +31,10 @@ namespace BLL
                 Idioma = registro.Idioma
             }, registro.Completo);
         }
+        public async Task<RegistroDTO> ObterRelacao(RelacaoConsulta relacao)
+        {
+            return RegistroDAL.ObterRelacao(relacao.CodRegistro);
+        }
         public async Task<List<RegistroDTO>> ListarPorLocalidade(LocalidadeConsulta localidade)
         {
             return RegistroDAL.ListarPorLocalidade(localidade.Codigo);
