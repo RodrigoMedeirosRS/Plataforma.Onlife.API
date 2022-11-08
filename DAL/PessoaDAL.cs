@@ -23,7 +23,7 @@ namespace DAL
             
             if(pessoa != null)
             {
-                pessoa.Nome = pessoaDTO.Nome;
+                pessoa = Conversor.Mapear(pessoaDTO);
                 DataContext.Update(pessoa);
                 DataContext.SaveChanges();
             }
