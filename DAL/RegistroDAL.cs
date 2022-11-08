@@ -36,7 +36,7 @@ namespace DAL
                 where 
                     registro.Codigo == codRegistro
                 select
-                    Conversor.Mapear(registro, tipo.Nome, completo, 0)).AsNoTracking().FirstOrDefault();
+                    Conversor.Mapear(registro, idioma.Nome, tipo.Nome, completo, 0)).AsNoTracking().FirstOrDefault();
             
             resultado.Referencias = ReferenciaDAL.ObterReferencia(resultado.Codigo);
             resultado.CodigoCidade = BuscarCidade(resultado.Codigo);
@@ -57,7 +57,7 @@ namespace DAL
                     ((!string.IsNullOrEmpty(registroDTO.Nome) && registro.Nome.ToLower().Contains(registroDTO.Nome.ToLower())) 
                     || ((!string.IsNullOrEmpty(registroDTO.Apelido) && registro.Apelido.ToLower().Contains(registroDTO.Apelido.ToLower()))))
                 select
-                    Conversor.Mapear(registro, tipo.Nome, completo, 0)).AsNoTracking().DistinctBy(registroDB => registroDB.Codigo).ToList(); 
+                    Conversor.Mapear(registro, idioma.Nome, tipo.Nome, completo, 0)).AsNoTracking().DistinctBy(registroDB => registroDB.Codigo).ToList(); 
 
             foreach(var registro in registros)
             {
@@ -81,7 +81,7 @@ namespace DAL
                 where
                     registroLocalidade.Localidade == codigoLocalidade
                 select
-                    Conversor.Mapear(registro, tipo.Nome, false, registroLocalidade.Localidade)).AsNoTracking().DistinctBy(registroDB => registroDB.Codigo).ToList();
+                    Conversor.Mapear(registro, idioma.Nome, tipo.Nome, false, registroLocalidade.Localidade)).AsNoTracking().DistinctBy(registroDB => registroDB.Codigo).ToList();
             
             foreach(var registro in registros)
                 registro.Referencias = ReferenciaDAL.ObterReferencia(registro.Codigo);

@@ -73,7 +73,7 @@ namespace DAL
                 where 
                     pessoaRelacao.Pessoa == pessoaDTO.Codigo 
                 select 
-                    Conversor.Mapear(registro, tipo.Nome, false, 0)).AsNoTracking().DistinctBy(registroDB => registroDB.Codigo).ToList();
+                    Conversor.Mapear(registro, idioma.Nome, tipo.Nome, false, 0)).AsNoTracking().DistinctBy(registroDB => registroDB.Codigo).ToList();
             
             foreach(var registro in registros)
             {
